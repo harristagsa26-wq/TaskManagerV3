@@ -237,7 +237,7 @@ function clearTask() {
               text-sidebar-primary-foreground">
               <GalleryVerticalEnd class="size-4"/>        
               </div>
-              <span class="truncate font-bold">My Task Manager</span>
+              <span class="truncate font-bold select-none">My Task Manager</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -245,11 +245,11 @@ function clearTask() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Filters</SidebarGroupLabel>
+          <SidebarGroupLabel class="select-none">Filters</SidebarGroupLabel>
              <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem v-for="f in filters" :key="f">
-                  <SidebarMenuButton :is-active="filter === f" @click="filter = f" class="cursor-pointer">
+                  <SidebarMenuButton :is-active="filter === f" @click="filter = f" class="cursor-pointer select-none">
                     <List v-if="f === 'All'" />
                       <Clock v-else-if="f === 'Deadline'" /> 
                       <CalendarOff v-else-if="f === 'No deadline'"/>
@@ -265,9 +265,9 @@ function clearTask() {
       </SidebarContent>
 
       <SidebarFooter>
-        <div class="px-2 text-sm text-muted-foreground">
+        <div class="px-2 text-sm text-muted-foreground select-none">
           {{ remaining }} remaining 
-          <span v-if="overdueCount" class="text-destructive">
+          <span v-if="overdueCount" class="text-destructive select-none">
             . {{ overdueCount }} overdue
           </span>
         </div>
