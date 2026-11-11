@@ -55,6 +55,7 @@ import {
 } from 'lucide-vue-next'
 import { toast } from 'vue-sonner'
 import { Toaster } from '@/components/ui/sonner'
+import { Select } from 'reka-ui/namespaced'
 
 
 type Task = {
@@ -62,7 +63,7 @@ type Task = {
   title: string
   type: 'deadline' | 'none'
   deadline: string 
-  done: boolean
+  done: boolean,
 }
 
 const isDark = ref(localStorage.getItem('theme') === 'dark')
@@ -110,10 +111,10 @@ const search = ref('')
 
 const filteredTasks = computed(() => {
     const predicate = filterFuncs[filter.value] ?? filterFuncs.All!
-    const query = search.value.trim().toLowerCase()
+    const searchTask = search.value.trim().toLowerCase()
 
     return tasks.value.filter(predicate)
-    .filter((t) => t.title.toLowerCase().includes(query))
+    .filter((t) => t.title.toLowerCase().includes(searchTask))
     .sort((a, b) => {
       const aHas = a.type === 'deadline' && a.deadline
       const bHas = b.type === 'deadline' && b.deadline
@@ -246,7 +247,7 @@ function clearTask() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel class="select-none">Filters</SidebarGroupLabel>
-             <SidebarGroupContent>
+            <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem v-for="f in filters" :key="f">
                   <SidebarMenuButton 
@@ -260,9 +261,9 @@ function clearTask() {
                         <span>
                           {{ f }}
                         </span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
