@@ -345,7 +345,7 @@ function clearTask() {
         </p>
         </div>
         <template v-else>
-          <h1 class="mb-4 text-2xl font-semibold justify-center">
+          <h1 class="mb-4 text-2xl font-semibold justify-center select-none">
             {{ filter }}
           </h1>
         </template>
@@ -363,7 +363,7 @@ function clearTask() {
               {{ task.title }}
             </p>
             <p v-if="task.type === 'deadline'"
-            class="text-xs"
+            class="text-xs select-none"
             :class="isOverdue(task) ? 'text-destructive' : 'text-muted-foreground'">
             Deadline: {{ task.deadline }}
             <span v-if="isOverdue(task)">(overdue)</span>
