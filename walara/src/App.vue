@@ -249,7 +249,10 @@ function clearTask() {
              <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem v-for="f in filters" :key="f">
-                  <SidebarMenuButton :is-active="filter === f" @click="filter = f" class="cursor-pointer select-none">
+                  <SidebarMenuButton 
+                  :is-active="filter === f" @click="filter = f" 
+                  class="cursor-pointer select-none"
+                  >
                     <List v-if="f === 'All'" />
                       <Clock v-else-if="f === 'Deadline'" /> 
                       <CalendarOff v-else-if="f === 'No deadline'"/>
@@ -321,7 +324,11 @@ function clearTask() {
             <AlertDialogCancel class="cursor-pointer">
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction class="bg-destructive text-white hover:bg-destructive/90 select-none cursor-pointer"
+            <AlertDialogAction 
+            class="bg-destructive text-white 
+            hover:bg-destructive/90 
+            select-none 
+            cursor-pointer"
             @click="clearTask">
             Clear all
             </AlertDialogAction>
